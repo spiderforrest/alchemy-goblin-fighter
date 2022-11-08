@@ -37,20 +37,24 @@ function assembleGoblin(index) {
 
 // todo: write the actual game code here
 function attackHandler(index) {
+    // check if he ded
+    if (goblinArray[index].hp === 0) return;
     // player attack
     if (Math.floor(Math.random() * 2) === 1) {
         alert(`Hit! ${goblinArray[index].name} takes 1 damage.`);
         goblinArray[index].hp--;
+        if (goblinArray[index].hp === 0) wins++;
         displayGoblins();
     } else {
         alert('Miss!');
     }
-    // check if he ded
+    // check if he ded again
     if (goblinArray[index].hp === 0) return;
     // him attack
     if (Math.floor(Math.random() * 2) === 1) {
         alert(`Hit! ${goblinArray[index].name} does 1 damage.`);
         hp--;
+        displayPlayer();
     } else {
         alert(`${goblinArray[index].name} misses you!`);
     }
