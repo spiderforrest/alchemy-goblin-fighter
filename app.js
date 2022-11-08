@@ -21,31 +21,40 @@ function makeGoblin(name, health) {
 }
 
 // put together the goblin div
-function assembleGoblin(goblin, index) {
+function assembleGoblin(index) {
     const goblinDiv = document.createElement('div');
     const nameH = document.createElement('h3');
     const hpP = document.createElement('p');
 
-    nameH.textContent = goblin.name;
-    hpP.id = `goblin-health-${index}`;
-    hpP.textContent = `health: ${goblin.hp}`;
+    nameH.textContent = goblinArray[index].name;
+    hpP.textContent = `health: ${goblinArray[index].hp}`;
     goblinDiv.append(nameH, hpP);
-
+    goblinDiv.addEventListener('click', () => {
+        attackHandler(index);
+    });
     return goblinDiv;
 }
 
 // todo: write the actual game code here
-function attackHandler() {}
+function attackHandler(index) {
+    console.log(goblinArray);
+    // i love ternaries i did not know js had them
+    const playerHit = Math.floor(Math.random() * 2) === 1 ? false : true;
+    if (playerHit === true) {
+        alert(`Hit! ${goblinArray[index].name} takes 1 damage.`);
+        goblinArray[index].hp--;
+        displayGoblins();
+    } else {
+        alert('Miss!');
+    }
+    console.log(goblinArray);
+}
 
 // iterate over array, showing goblins, you know the drill
 function displayGoblins() {
     goblins.textContent = '';
-
-    for (const [index, item] of goblinArray.entries()) {
-        const target = assembleGoblin(item, index);
-        target.addEventListener('click', () => {
-            attackHandler(item);
-        });
+    for (const [index, _item] of goblinArray.entries()) {
+        const target = assembleGoblin(index);
         goblins.append(target);
     }
 }
