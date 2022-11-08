@@ -48,6 +48,7 @@ function attackHandler(index) {
             wins++;
             displayPlayer();
             alert(`You killed ${goblinArray[index].name}!`);
+            return;
         }
     } else {
         alert('Miss!');
