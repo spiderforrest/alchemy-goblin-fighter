@@ -37,17 +37,23 @@ function assembleGoblin(index) {
 
 // todo: write the actual game code here
 function attackHandler(index) {
-    console.log(goblinArray);
-    // i love ternaries i did not know js had them
-    const playerHit = Math.floor(Math.random() * 2) === 1 ? false : true;
-    if (playerHit === true) {
+    // player attack
+    if (Math.floor(Math.random() * 2) === 1) {
         alert(`Hit! ${goblinArray[index].name} takes 1 damage.`);
         goblinArray[index].hp--;
         displayGoblins();
     } else {
         alert('Miss!');
     }
-    console.log(goblinArray);
+    // check if he ded
+    if (goblinArray[index].hp === 0) return;
+    // him attack
+    if (Math.floor(Math.random() * 2) === 1) {
+        alert(`Hit! ${goblinArray[index].name} does 1 damage.`);
+        hp--;
+    } else {
+        alert(`${goblinArray[index].name} misses you!`);
+    }
 }
 
 // iterate over array, showing goblins, you know the drill
