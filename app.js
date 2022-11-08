@@ -1,3 +1,5 @@
+import { getRandName } from './lib/gen-rand-name.js';
+
 const wincount = document.getElementById('wincount');
 const health = document.getElementById('health');
 const player = document.getElementById('player');
@@ -38,6 +40,7 @@ function attackHandler() {}
 // iterate over array, showing goblins, you know the drill
 function displayGoblins() {
     goblins.textContent = '';
+
     for (const [index, item] of goblinArray.entries()) {
         const target = assembleGoblin(item, index);
         target.addEventListener('click', () => {
@@ -47,10 +50,15 @@ function displayGoblins() {
     }
 }
 
+submit.addEventListener('click', () => {
+    const name = addGoblinInput.value || getRandName();
+    makeGoblin(name, 3);
+    displayGoblins();
+});
+
 function init() {
-    makeGoblin('Ackazar, The Mighty, Ruler of Mordor', 1);
+    makeGoblin('Ackazar, The Mighty, Ruler of Mordor, Slayer of Heros, Harbringer of Calamity', 1);
     makeGoblin('bob', 5);
     displayGoblins();
 }
 init();
-console.log(goblinArray);
