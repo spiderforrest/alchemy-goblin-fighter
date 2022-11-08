@@ -43,13 +43,16 @@ function attackHandler(index) {
     if (Math.floor(Math.random() * 2) === 1) {
         alert(`Hit! ${goblinArray[index].name} takes 1 damage.`);
         goblinArray[index].hp--;
-        if (goblinArray[index].hp === 0) wins++;
         displayGoblins();
+        if (goblinArray[index].hp === 0) {
+            wins++;
+            displayPlayer();
+            alert(`You killed ${goblinArray[index].name}!`);
+        }
     } else {
         alert('Miss!');
     }
-    // check if he ded again
-    if (goblinArray[index].hp === 0) return;
+
     // him attack
     if (Math.floor(Math.random() * 2) === 1) {
         alert(`Hit! ${goblinArray[index].name} does 1 damage.`);
