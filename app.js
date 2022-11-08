@@ -65,6 +65,12 @@ function displayGoblins() {
     }
 }
 
+function displayPlayer() {
+    wincount.textContent =
+        wins === 1 ? 'You have defeated 1 goblin!' : `You have defeated ${wins} goblins!`;
+    health.textContent = 'HP: ' + hp;
+}
+
 submit.addEventListener('click', () => {
     const name = addGoblinInput.value || getRandName();
     makeGoblin(name, 3);
@@ -75,5 +81,6 @@ function init() {
     makeGoblin('Ackazar, The Mighty, Ruler of Mordor, Slayer of Heros, Harbringer of Calamity', 1);
     makeGoblin('bob', 5);
     displayGoblins();
+    displayPlayer();
 }
 init();
