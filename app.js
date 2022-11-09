@@ -9,7 +9,8 @@ const goblins = document.getElementById('goblins');
 
 let hp = 10;
 let wins = 0;
-let goblinArray = [];
+// i will never get used to arrays as objects and mutability
+const goblinArray = [];
 
 // adds a new goblin
 function makeGoblin(name, health) {
@@ -28,17 +29,21 @@ function assembleGoblin(index) {
 
     nameH.textContent = goblinArray[index].name;
     hpP.textContent = `health: ${goblinArray[index].hp}`;
+    if (goblinArray[index].hp === 0) goblinDiv.classList.add('dead');
+
     goblinDiv.append(nameH, hpP);
+
     goblinDiv.addEventListener('click', () => {
         attackHandler(index);
     });
+
     return goblinDiv;
 }
 
 // todo: write the actual game code here
 function attackHandler(index) {
-    // check if he ded
-    if (goblinArray[index].hp === 0) return;
+    // check if he ded or you ded
+    if (goblinArray[index].hp === 0 || hp === 0) return;
     // player attack
     if (Math.floor(Math.random() * 2) === 1) {
         alert(`Hit! ${goblinArray[index].name} takes 1 damage.`);
@@ -76,7 +81,13 @@ function displayGoblins() {
 function displayPlayer() {
     wincount.textContent =
         wins === 1 ? 'You have defeated 1 goblin!' : `You have defeated ${wins} goblins!`;
-    health.textContent = 'HP: ' + hp;
+    if (hp === 0) {
+        health.textContent = 'you are dead.';
+        alert('you are dead');
+        player.classList.add('dead');
+    } else {
+        health.textContent = 'HP: ' + hp;
+    }
 }
 
 submit.addEventListener('click', () => {

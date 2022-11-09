@@ -1,5 +1,4 @@
 :root {
-    --background: rgb(224, 234, 247);
     --header-background: rgb(254, 251, 245);
     --primary-font: Corbel, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans',
         'Bitstream Vera Sans', 'Liberation Sans', Verdana, 'Verdana Ref', sans-serif;
@@ -7,7 +6,7 @@
 
 body {
     font-family: var(--primary-font);
-    background: var(--background);
+    background: #242d36;
     display: grid;
     grid-template-rows: auto 1fr;
 }
@@ -22,7 +21,7 @@ header {
     align-items: center;
     gap: 10px;
 
-    background-color: var(--header-background);
+    background-color: #201e1a;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
@@ -32,4 +31,14 @@ header .logo {
 
 main {
     padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.player-img {
+    width: 200px;
+}
+
+.dead {
+    opacity: 20%;
 }
